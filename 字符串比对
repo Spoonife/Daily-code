@@ -1,0 +1,41 @@
+#include"stdio.h"
+#include"string.h"
+
+int main() {
+	
+	char word1[100] = { 0 };
+	char word2[100] = { 0 };
+	
+	gets_s(word1, sizeof(word1));
+	gets_s(word2, sizeof(word2));
+	
+	int finish = strlen(word2);
+	int flag = 1;
+	if (strstr(word2, word1) == '\0') {
+		flag = 0;
+		printf("%d", -1);
+	}
+
+	char *p = word2;
+	while (flag) {
+		p = strstr(p, word1);
+		if (p == '\0')
+			break;
+		int len = strlen(p);
+		printf("%d ", finish - len);
+		p++;
+	}
+
+	return 0;
+}
+
+//strstr函数使用实例
+//#include<string.h>
+//#include<stdio.h>
+//main()
+//{
+//	char *string1 = ”needle in haystack”;
+//	char *string2 = ”hay”;
+//	printf(“%sn\n.”strstr(string1, string2);
+//	return 0;
+//}
