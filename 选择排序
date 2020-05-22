@@ -1,0 +1,42 @@
+#include"stdio.h"
+
+int max(int a[], int len) {
+	int maxid = 0;
+	for (int i = 1; i < len; i++) {
+		if (a[i] > a[maxid]){
+			maxid = i;
+		}
+	}
+	return maxid;
+}
+
+//int search(int key, int a[], int len) {
+//	int ret = -1;
+//	for (int i = 0; i < len; i++) {
+//		if (key == a[i]) {
+//			ret = i;
+//			break;
+//		}
+//	}
+//	return ret;
+//}
+
+int main() {
+	//int k = 10;
+	//int r = search(k, amount, sizeof(amount) / sizeof(amount[0]));
+
+	int a[] = { 11,12,13,33,22,17,19,20 };
+	int len = sizeof(a) / sizeof(a[0]);
+	for (int i = len - 1; i > 0; i--) {
+		int maxid = max(a, i + 1);
+		int t = a[maxid];
+		a[maxid] = a[i];
+		a[i] = t;
+	}
+	for (int i = 0; i < len; i++) {
+		printf("%d ", a[i]);
+	}
+
+
+	return 0;
+}
